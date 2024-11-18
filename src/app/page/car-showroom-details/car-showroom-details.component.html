@@ -1,0 +1,103 @@
+<div class="mx-4" nz-row>
+  <div nz-col nzSpan="8">
+    <label for="">Name</label>
+    <input
+      [readOnly]="true"
+      nz-input
+      placeholder="Name"
+      [(ngModel)]="data.name"
+      type="text"
+      required
+      maxlength="100"
+    />
+    <nz-divider nzType="horizontal"></nz-divider>
+    <label for="">Commercial Registration Number</label>
+    <input
+      [readOnly]="true"
+      nz-input
+      placeholder="Commercial Registration Number"
+      [(ngModel)]="data.commercialRegistrationNumber"
+      type="number"
+      maxlength="10"
+    />
+
+    <nz-divider nzType="horizontal"></nz-divider>
+    <label for="">Manager Name</label>
+    <input
+      [readOnly]="true"
+      nz-input
+      placeholder="Manager Name"
+      [(ngModel)]="data.managerName"
+      type="text"
+      maxlength="10"
+    />
+
+    <nz-divider nzType="horizontal"></nz-divider>
+    <label for="">Contact Number</label>
+    <input
+      [readOnly]="true"
+      nz-input
+      placeholder="Contact Number"
+      [(ngModel)]="data.contactNumber"
+      type="number"
+      maxlength="15"
+    />
+
+    <nz-divider nzType="horizontal"></nz-divider>
+    <label for="">Address</label>
+    <input
+      [readOnly]="true"
+      nz-input
+      placeholder="Address"
+      [(ngModel)]="data.address"
+      type="text"
+      maxlength="15"
+    />
+  </div>
+  <nz-divider nzType="vertical" class="h-[30rem]"></nz-divider>
+
+  <div nz-col nzSpan="14">
+    <app-car-action-bar
+      [carPage]="carPage"
+      [filterBy]="filterBy"
+      (applyFilter)="changeSortedBy($event)"
+      (onopenCreateModal)="this.isVisible = true"
+      (onchangePageSize)="changePageSize($event)"
+    ></app-car-action-bar>
+    <nz-table #basicTable [nzData]="dataSet" [nzFrontPagination]="false">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>VIN</th>
+          <th>Maker</th>
+          <th>Model</th>
+          <th>Model Year</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of basicTable.data">
+          <td>{{ data.id }}</td>
+          <td>{{ data.vin }}</td>
+          <td>{{ data.maker }}</td>
+          <td>{{ data.model }}</td>
+          <td>{{ data.modelYear }}</td>
+        </tr>
+      </tbody>
+    </nz-table>
+    <div class="text-end">
+      <nz-pagination
+        [nzPageIndex]="carPage.number + 1"
+        [nzTotal]="carPage.totalElements"
+        [nzPageSize]="carPage.size"
+        (nzPageIndexChange)="changePage($event)"
+      ></nz-pagination>
+    </div>
+  </div>
+</div>
+<app-car-modal
+  (onCancel)="handleCancel()"
+  (onSubmit)="onSubmit($event)"
+  [modalData]="modalData"
+  [isVisible]="isVisible"
+  [carShowroomId]="data.id"
+></app-car-modal>

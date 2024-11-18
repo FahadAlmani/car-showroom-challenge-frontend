@@ -1,27 +1,35 @@
-# ShowroomsFrontend
+# Angular 18 Project with NG-ZORRO and Tailwind CSS
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.12.
+This is an Angular 18 project that integrates NG-ZORRO (Ant Design components for Angular) and Tailwind CSS. It demonstrates how to set up and use these two popular libraries to create a modern, responsive, and feature-rich Angular application.
 
-## Development server
+## Prerequisites
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Before you begin, ensure that you have the following installed on your machine:
 
-## Code scaffolding
+- [Node.js](https://nodejs.org/) (version 20.x)
+- [npm](https://www.npmjs.com/) (npm comes with Node.js)
+- [Angular CLI](https://angular.io/cli) (install via `npm install -g @angular/cli`)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Technologies Used
 
-## Build
+- **Angular 18**: The latest version of Angular for building dynamic web applications.
+- **NG-ZORRO**: A set of UI components based on Ant Design for Angular applications.
+- **Tailwind CSS**: A utility-first CSS framework for building custom designs without leaving your HTML.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Installation
 
-## Running unit tests
+Follow these steps to set up the project locally:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. **Clone the repository**:
 
-## Running end-to-end tests
+   ```bash
+   git clone https://github.com/your-username/your-project-name.git
+   cd your-project-name
+   ```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+2. **Run the project**:
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+   ```bash
+   npm i
+   ng serve
+   ```

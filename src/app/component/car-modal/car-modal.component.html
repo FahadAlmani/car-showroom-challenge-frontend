@@ -1,0 +1,119 @@
+<nz-modal
+  [(nzVisible)]="isVisible"
+  [nzTitle]="'Create Car Modal'"
+  (nzOnCancel)="onCancel.emit()"
+  (nzOnOk)="handleOk()"
+>
+  <ng-container *nzModalContent>
+    <form [formGroup]="carForm" (ngSubmit)="handleOk()">
+      <label for="vin">VIN</label>
+      <input
+        nz-input
+        id="vin"
+        placeholder="VIN"
+        [(ngModel)]="modalData.vin"
+        name="vin"
+        type="text"
+        required
+        formControlName="vin"
+      />
+      @if(carForm.controls.vin.invalid && carForm.controls.vin.touched ||
+      carForm.controls.vin.dirty){
+      @if(carForm.controls.vin.errors?.["required"]){
+      <span class="text-red-500">VIN is required </span>
+      } @if(carForm.controls.vin.errors?.["maxlength"]){
+      <span class="text-red-500">VIN cannot exceed 25 characters </span>
+      } }
+
+      <nz-divider nzType="horizontal"></nz-divider>
+
+      <label for="maker">Maker</label>
+      <input
+        nz-input
+        id="maker"
+        placeholder="Maker"
+        [(ngModel)]="modalData.maker"
+        name="maker"
+        type="text"
+        formControlName="maker"
+      />
+      @if(carForm.controls.maker.invalid && carForm.controls.maker.touched ||
+      carForm.controls.maker.dirty){
+      @if(carForm.controls.maker.errors?.["required"]){
+      <span class="text-red-500">maker is required </span>
+      } @if(carForm.controls.maker.errors?.["maxlength"]){
+      <span class="text-red-500">maker cannot exceed 25 characters </span>
+      } }
+      <nz-divider nzType="horizontal"></nz-divider>
+
+      <label for="model">Model</label>
+      <input
+        nz-input
+        id="model"
+        placeholder="Model"
+        [(ngModel)]="modalData.model"
+        name="model"
+        type="text"
+        formControlName="model"
+      />
+      @if(carForm.controls.model.invalid && carForm.controls.model.touched ||
+      carForm.controls.model.dirty){
+      @if(carForm.controls.model.errors?.["required"]){
+      <span class="text-red-500">model is required </span>
+      } @if(carForm.controls.model.errors?.["maxlength"]){
+      <span class="text-red-500">model cannot exceed 25 characters </span>
+      } }
+      <nz-divider nzType="horizontal"></nz-divider>
+
+      <label for="modelYear">Model Year</label>
+      <input
+        nz-input
+        id="modelYear"
+        placeholder="Model Year"
+        [(ngModel)]="modalData.modelYear"
+        name="modelYear"
+        type="number"
+        formControlName="modelYear"
+      />
+      @if(carForm.controls.modelYear.invalid &&
+      carForm.controls.modelYear.touched || carForm.controls.modelYear.dirty){
+      @if(carForm.controls.modelYear.errors?.["required"]){
+      <span class="text-red-500">model Year is required </span>
+
+      } @if(carForm.controls.modelYear.errors?.["pattern"]){
+      <span class="text-red-500">model Year cannot exceed 4 characters </span>
+      } }
+      <nz-divider nzType="horizontal"></nz-divider>
+
+      <label for="price">Price</label>
+      <input
+        nz-input
+        id="price"
+        placeholder="Price"
+        [(ngModel)]="modalData.price"
+        name="price"
+        type="number"
+        formControlName="price"
+      />
+      @if(carForm.controls.price.invalid && carForm.controls.model.touched ||
+      carForm.controls.price.dirty){
+      @if(carForm.controls.price.errors?.["required"]){
+      <span class="text-red-500">price is required </span>
+      } @if(carForm.controls.price.errors?.["maxlength"]){
+      <span class="text-red-500">price cannot exceed 25 characters </span>
+      } }
+    </form>
+  </ng-container>
+
+  <div *nzModalFooter>
+    <button nz-button nzType="default" (click)="onCancel.emit()">Cancel</button>
+    <button
+      nz-button
+      nzType="primary"
+      [disabled]="carForm.invalid"
+      (click)="handleOk()"
+    >
+      Submit
+    </button>
+  </div>
+</nz-modal>

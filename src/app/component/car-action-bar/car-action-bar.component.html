@@ -1,0 +1,55 @@
+<div class="flex justify-between">
+  <button
+    nz-button
+    nzType="primary"
+    [nzSize]="'large'"
+    (click)="onopenCreateModal.emit()"
+  >
+    Create
+  </button>
+  <div>
+    <label class="mx-4" for="">Sorted By</label>
+    <nz-select class="w-64" [(ngModel)]="filterBy">
+      <nz-option nzValue="none" nzLabel="None"></nz-option>
+      <nz-option nzValue="id" nzLabel="id"></nz-option>
+      <nz-option nzValue="vin" nzLabel="VIN"></nz-option>
+      <nz-option nzValue="maker" nzLabel="Maker"></nz-option>
+      <nz-option nzValue="model" nzLabel="Model"></nz-option>
+      <nz-option nzValue="modelYear" nzLabel="Model Year"></nz-option>
+      <nz-option nzValue="price" nzLabel="Price"></nz-option>
+    </nz-select>
+    <nz-divider nzType="vertical"></nz-divider>
+    <label class="mx-4" for="">Value</label>
+    <input
+      class="w-28"
+      nz-input
+      placeholder="Value"
+      [(ngModel)]="value"
+      type="text"
+    />
+    <nz-divider nzType="vertical"></nz-divider>
+
+    <button
+      nz-button
+      nzType="primary"
+      [nzSize]="'large'"
+      (click)="applyFilter.emit({ filterBy: filterBy, value: value })"
+    >
+      Apply
+    </button>
+    <nz-divider nzType="vertical"></nz-divider>
+    <label class="mx-4" for="">Page Size</label>
+    <nz-select
+      class="w-20"
+      [(ngModel)]="carPage.size"
+      (ngModelChange)="onchangePageSize.emit($event)"
+    >
+      <nz-option [nzValue]="5" [nzLabel]="5"></nz-option>
+      <nz-option [nzValue]="10" [nzLabel]="10"></nz-option>
+      <nz-option [nzValue]="15" [nzLabel]="15"></nz-option>
+      <nz-option [nzValue]="20" [nzLabel]="20"></nz-option>
+      <nz-option [nzValue]="20" [nzLabel]="25"></nz-option>
+      <nz-option [nzValue]="30" [nzLabel]="30"></nz-option>
+    </nz-select>
+  </div>
+</div>

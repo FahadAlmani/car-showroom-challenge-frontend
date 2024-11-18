@@ -1,0 +1,64 @@
+<app-car-showroom-action-bar
+  [carShowroomPage]="carShowroomPage"
+  [sortedBy]="sortedBy"
+  (onchangePageSize)="changePageSize($event)"
+  (onopenCreateModal)="openCreateModal()"
+  (onchangeSortedBy)="changeSortedBy($event)"
+></app-car-showroom-action-bar>
+<nz-table #basicTable [nzData]="dataSet" [nzFrontPagination]="false">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th>Commercial Registration Number</th>
+      <th>Manager Name</th>
+      <th>Contact Number</th>
+      <th>Address</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>{{ data.id }}</td>
+      <td>{{ data.name }}</td>
+      <td>{{ data.commercialRegistrationNumber }}</td>
+      <td>{{ data.contactNumber }}</td>
+      <td>
+        <button nz-button nzType="primary" (click)="openViewModal(data)">
+          View
+        </button>
+        <nz-divider nzType="vertical"></nz-divider>
+        <button nz-button nzType="primary" (click)="openUpdateModal(data)">
+          Update
+        </button>
+        <nz-divider nzType="vertical"></nz-divider>
+        <button
+          nz-button
+          nzType="primary"
+          nzDanger
+          nz-popconfirm
+          nzPopconfirmTitle="Are you sure delete this task?"
+          nzPopconfirmPlacement="bottom"
+          (nzOnConfirm)="confirm(data.id)"
+        >
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
+<div class="text-end">
+  <nz-pagination
+    [nzPageIndex]="carShowroomPage.number + 1"
+    [nzTotal]="carShowroomPage.totalElements"
+    [nzPageSize]="carShowroomPage.size"
+    (nzPageIndexChange)="changePage($event)"
+  ></nz-pagination>
+</div>
+<app-car-showroom-modal
+  [isVisible]="isVisible"
+  (onSubmit)="onSubmit($event)"
+  (onCancel)="handleCancel()"
+  [modalMode]="modalMode"
+  [modalData]="modalData"
+></app-car-showroom-modal>

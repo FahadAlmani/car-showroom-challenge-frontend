@@ -1,0 +1,124 @@
+<nz-modal
+  [(nzVisible)]="isVisible"
+  [nzTitle]="modalMode + ' Showroom Modal'"
+  (nzOnCancel)="onCancel.emit()"
+  (nzOnOk)="handleOk()"
+>
+  <ng-container *nzModalContent>
+    <form [formGroup]="carShowroomForm" (ngSubmit)="handleOk()">
+      <div *ngIf="modalMode != 'Update'">
+        <label for="">Name</label>
+        <input
+          [readOnly]="modalMode === 'View'"
+          nz-input
+          placeholder="Name"
+          [(ngModel)]="modalData.name"
+          type="text"
+          formControlName="name"
+        />
+        @if(carShowroomForm.controls.name.invalid &&
+        carShowroomForm.controls.name.touched ||
+        carShowroomForm.controls.name.dirty){
+        @if(carShowroomForm.controls.name.errors?.["required"]){
+        <span class="text-red-500">name is required </span>
+        } @if(carShowroomForm.controls.name.errors?.["maxlength"]){
+        <span class="text-red-500">name cannot exceed 100 characters </span>
+        } }
+        <nz-divider nzType="horizontal"></nz-divider>
+      </div>
+      <div *ngIf="modalMode != 'Update'">
+        <label for="">Commercial Registration Number</label>
+        <input
+          [readOnly]="modalMode === 'View'"
+          nz-input
+          placeholder="Commercial Registration Number"
+          [(ngModel)]="modalData.commercialRegistrationNumber"
+          type="number"
+          formControlName="commercialRegistrationNumber"
+        />
+        @if(carShowroomForm.controls.commercialRegistrationNumber.invalid &&
+        carShowroomForm.controls.commercialRegistrationNumber.touched ||
+        carShowroomForm.controls.commercialRegistrationNumber.dirty){
+        @if(carShowroomForm.controls.commercialRegistrationNumber.errors?.["required"]){
+        <span class="text-red-500"
+          >Commercial Registration Number is required
+        </span>
+        }
+        @if(carShowroomForm.controls.commercialRegistrationNumber.errors?.["pattern"]){
+        <span class="text-red-500"
+          >Commercial registration number must be 10 digits
+        </span>
+        } }
+        <nz-divider nzType="horizontal"></nz-divider>
+      </div>
+      <label for="">Manager Name</label>
+      <input
+        [readOnly]="modalMode === 'View'"
+        nz-input
+        placeholder="Manager Name"
+        [(ngModel)]="modalData.managerName"
+        type="text"
+        formControlName="managerName"
+      />
+      @if(carShowroomForm.controls.managerName.invalid &&
+      carShowroomForm.controls.managerName.touched ||
+      carShowroomForm.controls.managerName.dirty){
+      @if(carShowroomForm.controls.managerName.errors?.["required"]){
+      <span class="text-red-500">Manager Name is required </span>
+      } @if(carShowroomForm.controls.managerName.errors?.["maxlength"]){
+      <span class="text-red-500"
+        >Manager Name cannot exceed 100 characters
+      </span>
+      } }
+      <nz-divider nzType="horizontal"></nz-divider>
+      <label for="">Contact Number</label>
+      <input
+        [readOnly]="modalMode === 'View'"
+        nz-input
+        placeholder="Contact Number"
+        [(ngModel)]="modalData.contactNumber"
+        type="number"
+        formControlName="contactNumber"
+      />
+      @if(carShowroomForm.controls.contactNumber.invalid &&
+      carShowroomForm.controls.contactNumber.touched ||
+      carShowroomForm.controls.contactNumber.dirty){
+      @if(carShowroomForm.controls.contactNumber.errors?.["required"]){
+      <span class="text-red-500">Contact Number is required </span>
+      } @if(carShowroomForm.controls.contactNumber.errors?.["pattern"]){
+      <span class="text-red-500"
+        >Contact Number cannot exceed 15 characters
+      </span>
+      } }
+      <nz-divider nzType="horizontal"></nz-divider>
+      <label for="">Address</label>
+      <input
+        [readOnly]="modalMode === 'View'"
+        nz-input
+        placeholder="Address"
+        [(ngModel)]="modalData.address"
+        type="text"
+        formControlName="address"
+      />
+      @if(carShowroomForm.controls.address.invalid &&
+      carShowroomForm.controls.address.touched ||
+      carShowroomForm.controls.address.dirty){
+      @if(carShowroomForm.controls.address.errors?.["required"]){
+      <span class="text-red-500">address is required </span>
+      } @if(carShowroomForm.controls.address.errors?.["maxlength"]){
+      <span class="text-red-500">address cannot exceed 255 characters </span>
+      } }
+    </form>
+  </ng-container>
+  <div *nzModalFooter>
+    <button nz-button nzType="default" (click)="onCancel.emit()">Cancel</button>
+    <button
+      *ngIf="modalMode !== 'View'"
+      nz-button
+      nzType="primary"
+      (click)="handleOk()"
+    >
+      Submit
+    </button>
+  </div>
+</nz-modal>

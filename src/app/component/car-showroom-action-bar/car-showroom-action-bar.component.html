@@ -1,0 +1,42 @@
+<div class="flex justify-between">
+  <button
+    nz-button
+    nzType="primary"
+    [nzSize]="'large'"
+    (click)="onopenCreateModal.emit()"
+  >
+    Create
+  </button>
+  <div>
+    <label class="mx-4" for="">Sorted By</label>
+    <nz-select
+      class="w-64"
+      [(ngModel)]="sortedBy"
+      (ngModelChange)="onchangeSortedBy.emit($event)"
+    >
+      <nz-option nzValue="id" nzLabel="id"></nz-option>
+      <nz-option nzValue="name" nzLabel="name"></nz-option>
+      <nz-option
+        nzValue="commercialRegistrationNumber"
+        nzLabel="Commercial Registration Number"
+      ></nz-option>
+      <nz-option nzValue="mangerName" nzLabel="Manger Name"></nz-option>
+      <nz-option nzValue="contactNumber" nzLabel="Contact Number"></nz-option>
+      <nz-option nzValue="address" nzLabel="Address"></nz-option>
+    </nz-select>
+    <nz-divider nzType="vertical"></nz-divider>
+    <label class="mx-4" for="">Page Size</label>
+    <nz-select
+      class="w-20"
+      [(ngModel)]="carShowroomPage.size"
+      (ngModelChange)="onchangePageSize.emit($event)"
+    >
+      <nz-option [nzValue]="5" [nzLabel]="5"></nz-option>
+      <nz-option [nzValue]="10" [nzLabel]="10"></nz-option>
+      <nz-option [nzValue]="15" [nzLabel]="15"></nz-option>
+      <nz-option [nzValue]="20" [nzLabel]="20"></nz-option>
+      <nz-option [nzValue]="20" [nzLabel]="25"></nz-option>
+      <nz-option [nzValue]="30" [nzLabel]="30"></nz-option>
+    </nz-select>
+  </div>
+</div>
